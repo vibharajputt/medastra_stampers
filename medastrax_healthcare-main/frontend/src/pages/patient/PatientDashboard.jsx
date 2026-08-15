@@ -25,7 +25,7 @@ import {
   FiCopy,
   FiUser
 } from 'react-icons/fi';
-import { hospitalAPI, aiAPI, authAPI, rewardsAPI, emergencyAPI, bookingAPI, activityAPI, jobsAPI, workflowAPI } from '../../services/api';
+import { hospitalAPI, aiAPI, authAPI, rewardsAPI, emergencyAPI, bookingAPI, activityAPI, jobsAPI, workflowAPI, riskAPI } from '../../services/api';
 import { getOfflineAiResponse } from '../../services/offlineAi';
 import { useAuth } from '../../context/AuthContext';
 import { jsPDF } from 'jspdf';
@@ -92,6 +92,10 @@ export default function PatientDashboard() {
   // Leaderboard states
   const [leaderboardData, setLeaderboardData] = useState([]);
   const [leaderboardLoading, setLeaderboardLoading] = useState(true);
+
+  // Risk Engine Widget State
+  const [latestRisk, setLatestRisk] = useState(null);
+  const [riskLoading, setRiskLoading] = useState(false);
 
   // Bounty Features Widgets States
   const [pendingApprovalsCount, setPendingApprovalsCount] = useState(0);
@@ -573,12 +577,24 @@ export default function PatientDashboard() {
     fetchPendingApprovals();
     fetchActiveJobs();
     fetchRecentActivities();
+    fetchLatestRisk();
     const timer = setInterval(() => {
       fetchActiveJobs();
       fetchPendingApprovals();
     }, 10000);
     return () => clearInterval(timer);
   }, [activeProfile]);
+
+  const fetchLatestRisk = async () => {
+    try {
+      const res = await riskAPI.getLatestRisk();
+      if (res.data.data && res.data.data.riskScore !== undefined) {
+        setLatestRisk(res.data.data);
+      }
+    } catch (e) {
+      // No risk assessments yet — that's fine
+    }
+  };
 
 
   async function fetchHospitals() {
@@ -904,6 +920,101 @@ export default function PatientDashboard() {
               </motion.div>
             ))}
           </div>
+
+          {/* ── Risk Intelligence Widget ── */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.15 }}
+            style={{
+              background: latestRisk?.riskLevel === 'CRITICAL' || latestRisk?.riskLevel === 'HIGH'
+                ? 'rgba(239,68,68,0.06)'
+                : 'rgba(99,102,241,0.06)',
+              border: `1px solid ${latestRisk?.riskLevel === 'CRITICAL' ? 'rgba(239,68,68,0.3)' : latestRisk?.riskLevel === 'HIGH' ? 'rgba(249,115,22,0.3)' : 'rgba(99,102,241,0.2)'}`,
+              borderRadius: '18px',
+              padding: '22px 24px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: '20px',
+              flexWrap: 'wrap',
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flex: 1 }}>
+              {/* Score ring */}
+              <div style={{
+                width: 70, height: 70, borderRadius: '50%', flexShrink: 0,
+                background: latestRisk
+                  ? `conic-gradient(${
+                      latestRisk.riskLevel === 'CRITICAL' ? '#f87171' :
+                      latestRisk.riskLevel === 'HIGH' ? '#fb923c' :
+                      latestRisk.riskLevel === 'MODERATE' ? '#fbbf24' : '#4ade80'
+                    } ${latestRisk.riskScore * 3.6}deg, rgba(255,255,255,0.05) 0deg)`
+                  : 'rgba(255,255,255,0.05)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                boxShadow: latestRisk?.riskLevel === 'CRITICAL' ? '0 0 20px rgba(239,68,68,0.3)' : 'none',
+              }}>
+                <div style={{
+                  width: 56, height: 56, borderRadius: '50%',
+                  background: '#0d1424',
+                  display: 'flex', flexDirection: 'column',
+                  alignItems: 'center', justifyContent: 'center',
+                }}>
+                  <span style={{ fontSize: '1.1rem', fontWeight: 900, color: '#e2e8f0', lineHeight: 1 }}>
+                    {latestRisk ? latestRisk.riskScore : '?'}
+                  </span>
+                  <span style={{ fontSize: '0.55rem', color: '#64748b', fontWeight: 600 }}>/100</span>
+                </div>
+              </div>
+              <div>
+                <div style={{ fontWeight: 800, fontSize: '1rem', color: '#e2e8f0', marginBottom: 4, display: 'flex', alignItems: 'center', gap: 8 }}>
+                  🧬 Risk Intelligence Score
+                  {latestRisk?.alertTriggered && (
+                    <span style={{ background: 'rgba(239,68,68,0.15)', color: '#f87171', fontSize: '0.65rem', fontWeight: 700, padding: '2px 8px', borderRadius: 6 }}>
+                      🚨 ALERT SENT
+                    </span>
+                  )}
+                </div>
+                {latestRisk ? (
+                  <div style={{ fontSize: '0.82rem', color: '#94a3b8', lineHeight: 1.5 }}>
+                    Level: <strong style={{ color: latestRisk.riskLevel === 'CRITICAL' ? '#f87171' : latestRisk.riskLevel === 'HIGH' ? '#fb923c' : latestRisk.riskLevel === 'MODERATE' ? '#fbbf24' : '#4ade80' }}>{latestRisk.riskLevel}</strong>
+                    &nbsp;·&nbsp;Confidence: <strong style={{ color: '#e2e8f0' }}>{latestRisk.confidence}%</strong>
+                    &nbsp;·&nbsp;{new Date(latestRisk.timestamp).toLocaleDateString()}
+                  </div>
+                ) : (
+                  <div style={{ fontSize: '0.82rem', color: '#64748b', lineHeight: 1.5 }}>
+                    No assessment yet — click to run your first AI risk analysis
+                  </div>
+                )}
+                {latestRisk?.topFactors?.length > 0 && (
+                  <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginTop: 6 }}>
+                    {latestRisk.topFactors.slice(0,3).map((f, i) => (
+                      <span key={i} style={{
+                        background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)',
+                        color: '#94a3b8', fontSize: '0.7rem', padding: '2px 8px', borderRadius: 6
+                      }}>{f.factor}</span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+            <button
+              onClick={() => navigate('/risk-dashboard')}
+              id="btn-view-risk-dashboard"
+              style={{
+                background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)',
+                color: '#fff', border: 'none', padding: '11px 20px',
+                borderRadius: 12, fontWeight: 700, fontSize: '0.85rem',
+                cursor: 'pointer', whiteSpace: 'nowrap',
+                boxShadow: '0 4px 15px rgba(59,130,246,0.3)',
+                transition: 'all 0.2s',
+              }}
+              onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-2px)'}
+              onMouseLeave={e => e.currentTarget.style.transform = 'none'}
+            >
+              {latestRisk ? '🔍 Full Analysis →' : '🔬 Run Assessment →'}
+            </button>
+          </motion.div>
 
           {/* AI Report Comparison & Care Plan */}
           <div className="rewards-card" style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>

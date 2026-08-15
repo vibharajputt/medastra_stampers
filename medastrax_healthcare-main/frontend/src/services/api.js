@@ -214,4 +214,20 @@ export const workflowAPI = {
   getPendingCount: () => api.get('/workflows/pending-count'),
 };
 
+// ── Risk Assessment API ────────────────────────────────────────────────────────
+// Endpoints for the Early Risk Detection & Personalized Care engine.
+// All endpoints require patient authentication (JWT token).
+export const riskAPI = {
+  // Perform a full AI risk assessment.
+  // vitals: optional object with heartRate, systolicBP, diastolicBP, bloodSugar,
+  //         spo2, temperature, weight, height, respiratoryRate (any/all can be omitted)
+  assessRisk: (vitals = {}) => api.post('/risk/assess', vitals),
+
+  // Get time-series history of past risk scores (last 30, oldest first)
+  getRiskHistory: () => api.get('/risk/history'),
+
+  // Get latest risk summary for dashboard widget
+  getLatestRisk: () => api.get('/risk/latest'),
+};
+
 export default api;
