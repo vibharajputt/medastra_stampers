@@ -1,0 +1,22 @@
+node_modules/
+dist/
+target/
+.idea/
+*.iml
+.vscode/
+*.class
+*.log
+
+# H2 database files
+backend/data/
+*.db
+
+# Uploads folder
+backend/uploads/
+uploads/
+
+# Nested duplicate folder & temp files
+mediverse-main/
+scratch/
+*.zip
+application-secret.properties  

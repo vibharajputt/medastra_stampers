@@ -1,0 +1,365 @@
+/* ===== ABOUT PAGE ===== */
+.about-page {
+  min-height: 90vh;
+  position: relative;
+  overflow: hidden;
+  padding: 60px 0;
+}
+
+.about-bg-effects {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.about-orb-1 {
+  position: absolute;
+  top: -10%;
+  right: -10%;
+  width: 40%;
+  height: 60%;
+  background: radial-gradient(circle, rgba(29, 158, 117, 0.08) 0%, rgba(0, 0, 0, 0) 70%);
+}
+
+.about-orb-2 {
+  position: absolute;
+  bottom: -10%;
+  left: -10%;
+  width: 50%;
+  height: 70%;
+  background: radial-gradient(circle, rgba(43, 78, 170, 0.06) 0%, rgba(0, 0, 0, 0) 70%);
+}
+
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+/* Header Section */
+.about-header-section {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.about-title {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 850;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.about-intro {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* Mission Section */
+.about-mission-section {
+  width: 100%;
+}
+
+.mission-card {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 48px;
+  align-items: center;
+  padding: 48px;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+}
+
+.mission-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: left;
+}
+
+.mission-heading {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.mission-text {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.mission-graphic-box {
+  width: 100%;
+  height: 200px;
+  border-radius: var(--radius-lg);
+  background: rgba(43, 78, 170, 0.05);
+  border: 1px solid rgba(43, 78, 170, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.stethoscope-icon {
+  font-size: 4rem;
+  color: var(--primary);
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 4px 10px rgba(29, 158, 117, 0.25));
+}
+
+.stethoscope-glow {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(29, 158, 117, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Capabilities Grid */
+.about-what-we-do-section {
+  width: 100%;
+}
+
+.capabilities-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.capability-card {
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  transition: all var(--transition-normal);
+}
+
+.capability-card:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+}
+
+.capability-icon-wrapper {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  border: 1px solid var(--border-color);
+}
+
+/* Icon classes matching colors from mockups */
+.icon-consultation {
+  background: rgba(59, 130, 246, 0.08);
+  color: #3B82F6;
+}
+
+.icon-prescription {
+  background: rgba(99, 102, 241, 0.08);
+  color: #6366F1;
+}
+
+.icon-pharmacy {
+  background: rgba(16, 185, 129, 0.08);
+  color: #10B981;
+}
+
+.icon-diagnostics {
+  background: rgba(14, 165, 233, 0.08);
+  color: #0EA5E9;
+}
+
+.icon-triage {
+  background: rgba(244, 63, 94, 0.08);
+  color: #F43F5E;
+}
+
+.icon-careplans {
+  background: rgba(79, 70, 229, 0.08);
+  color: #4F46E5;
+}
+
+.icon-rewards {
+  background: rgba(245, 158, 11, 0.08);
+  color: #F59E0B;
+}
+
+.icon-emergency {
+  background: rgba(239, 68, 68, 0.08);
+  color: #EF4444;
+}
+
+.icon-voice {
+  background: rgba(6, 182, 212, 0.08);
+  color: #06B6D4;
+}
+
+.icon-offline {
+  background: rgba(139, 92, 246, 0.08);
+  color: #8B5CF6;
+}
+
+.icon-records {
+  background: rgba(16, 185, 129, 0.08);
+  color: #10B981;
+}
+
+.icon-partners {
+  background: rgba(239, 68, 68, 0.08);
+  color: #EF4444;
+}
+
+.capability-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.capability-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+  .capabilities-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .mission-card {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 32px;
+  }
+  
+  .mission-graphic-box {
+    height: 160px;
+  }
+}
+
+@media (max-width: 768px) {
+  .capabilities-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .about-title {
+    font-size: 2.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .capabilities-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .about-title {
+    font-size: 2.2rem;
+  }
+  
+  .about-container {
+    gap: 56px;
+  }
+}
+
+/* ===== KEYFRAME ANIMATIONS ===== */
+
+/* Floating background orbs — reuse from global or define here */
+@keyframes aboutOrb1 {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(-30px, 25px) scale(1.07); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+@keyframes aboutOrb2 {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(25px, -30px) scale(1.09); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+.about-orb-1 {
+  animation: aboutOrb1 16s ease-in-out infinite;
+}
+.about-orb-2 {
+  animation: aboutOrb2 20s ease-in-out infinite;
+}
+
+/* Subtle third orb in the middle */
+.about-orb-3 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 35%;
+  height: 35%;
+  border-radius: 50%;
+  filter: blur(80px);
+  background: radial-gradient(circle, rgba(29, 158, 117, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+  animation: aboutOrb1 25s ease-in-out infinite reverse;
+}
+
+/* Heart icon */
+.about-heart-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  color: var(--primary);
+  margin-top: 4px;
+  opacity: 0.85;
+}
+
+/* Stethoscope glow pulse */
+@keyframes stethoPulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.12); }
+}
+.stethoscope-glow {
+  animation: stethoPulse 3s ease-in-out infinite;
+}
+
+/* Capability card icon hover wiggle — handled by framer-motion */
+
+/* Mission card hover */
+.mission-card {
+  transition: box-shadow 0.3s ease;
+}
+.mission-card:hover {
+  box-shadow: 0 20px 60px rgba(29, 158, 117, 0.14);
+}
+
+/* Capability card transition */
+.capability-card {
+  transition: box-shadow 0.25s ease;
+}

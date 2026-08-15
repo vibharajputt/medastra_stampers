@@ -1,0 +1,7 @@
+MedAstraX Hospital Terms and Conditions:
+
+1. Institutional License: You represent that the hospital is fully registered, licensed, and compliant with all local safety standards.
+2. Bed Availability: Update total and available beds in real-time to support emergency management.
+3. Affiliated Doctors: Verify credentials of all doctors linked to your institutional profile.
+4. Emergency Admission: Prioritize critical patients and handle emergency referrals responsibly.
+5. Facilities Accuracy: List departments and ICU facilities accurately without misrepresentation.

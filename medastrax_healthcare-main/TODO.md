@@ -1,0 +1,6 @@
+- [ ] Step 1: Add condition badge fields to backend Booking entity
+- [ ] Step 2: Compute badge in BookingService.updateAiReport using offline keyword heuristic on aiReport
+- [ ] Step 3: Persist badge fields and include them in BookingController response payload (toMap)
+- [ ] Step 4: Update doctor UI appointment cards to render color-coded condition badge
+- [ ] Step 5: Update patient UI appointment cards to render color-coded condition badge
+- [ ] Step 6: Run basic build/test commands (backend compile + frontend lint/build) if available

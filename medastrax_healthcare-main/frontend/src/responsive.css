@@ -1,0 +1,1430 @@
+/* =====================================================
+   MEDIVERSE — GLOBAL RESPONSIVE CSS
+   Covers: Navbar, Auth, LandingPage, ContactPage,
+           AboutPage, FAQPage, SupportPage, HelpCenter,
+           GlobalQueryBot, and shared utility classes.
+   Breakpoints:
+     ≤1024px  → Tablet landscape
+     ≤768px   → Tablet portrait
+     ≤640px   → Large phone
+     ≤480px   → Standard phone
+     ≤360px   → Small phone
+===================================================== */
+
+/* ─────────────────────────────────────────
+   1. BASE & BODY
+───────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+img,
+video,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ─────────────────────────────────────────
+   2. SHARED UTILITY MOBILE OVERRIDES
+───────────────────────────────────────── */
+@media (max-width: 640px) {
+  .page-container {
+    padding: 0 16px;
+  }
+
+  .section {
+    padding: 40px 0;
+  }
+
+  .heading-xl {
+    font-size: 2rem !important;
+    letter-spacing: -0.5px;
+  }
+
+  .heading-lg {
+    font-size: 1.6rem !important;
+    letter-spacing: -0.3px;
+  }
+
+  .heading-md {
+    font-size: 1.35rem !important;
+  }
+
+  .heading-sm {
+    font-size: 1.1rem !important;
+  }
+
+  .modal-content {
+    padding: 20px 16px;
+    border-radius: 16px;
+    max-height: 95vh;
+  }
+
+  .modal-backdrop {
+    padding: 12px;
+    align-items: flex-end;
+  }
+
+  .btn-lg {
+    padding: 13px 24px;
+    font-size: 0.95rem;
+  }
+
+  .tab-group {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    flex-wrap: nowrap;
+  }
+
+  .tab-group::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mediverse-table-container {
+    margin-top: 8px;
+  }
+
+  .mediverse-table th,
+  .mediverse-table td {
+    padding: 12px;
+    font-size: 0.82rem;
+  }
+}
+
+/* ─────────────────────────────────────────
+   3. NAVBAR
+───────────────────────────────────────── */
+@media (max-width: 900px) {
+  .navbar-container {
+    padding: 0 16px;
+    height: 60px;
+  }
+
+  .brand-text {
+    font-size: 1.2rem !important;
+    white-space: nowrap !important;
+  }
+
+  .navbar-brand {
+    flex-shrink: 0 !important;
+  }
+
+  .brand-tagline {
+    display: none;
+  }
+
+  .navbar-logo-img {
+    height: 34px;
+    flex-shrink: 0 !important;
+  }
+
+  /* Hide all desktop specific navigation elements */
+  .navbar-actions,
+  .settings-dropdown-container,
+  .add-user-btn,
+  .show-users-btn,
+  .logout-btn,
+  .navbar-actions-wrapper>*:not(.mobile-menu-toggle) {
+    display: none !important;
+  }
+
+  .mobile-menu {
+    padding: 12px 16px 16px;
+  }
+
+  .mobile-nav-link {
+    padding: 12px 14px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-container {
+    height: 56px;
+    padding: 0 12px;
+  }
+
+  .brand-text {
+    font-size: 1.1rem !important;
+  }
+
+  .navbar-logo-img {
+    height: 30px;
+  }
+
+  .notification-panel,
+  .schedule-panel {
+    top: 68px;
+    right: 8px;
+    width: calc(100vw - 16px);
+  }
+}
+
+/* ─────────────────────────────────────────
+   4. AUTH PAGES (Login / Signup)
+───────────────────────────────────────── */
+@media (max-width: 640px) {
+  .auth-page {
+    padding: 20px 16px;
+    align-items: flex-start;
+    padding-top: 32px;
+  }
+
+  .auth-card {
+    padding: 28px 20px;
+    border-radius: 20px;
+    max-width: 100%;
+  }
+
+  .signup-card {
+    max-width: 100%;
+  }
+
+  .auth-title {
+    font-size: 1.6rem !important;
+  }
+
+  .auth-subtitle {
+    font-size: 0.88rem !important;
+  }
+
+  .auth-header {
+    margin-bottom: 24px;
+  }
+
+  /* Signup stepper */
+  .signup-progress {
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .step-number {
+    width: 30px;
+    height: 30px;
+    font-size: 0.8rem;
+  }
+
+  .step-label {
+    font-size: 0.62rem;
+    max-width: 52px;
+    text-align: center;
+  }
+
+  /* OTP boxes */
+  .otp-box {
+    width: 40px;
+    height: 48px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+  }
+
+  .otp-boxes {
+    gap: 6px;
+  }
+
+  /* Role selector */
+  .role-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+  .role-card {
+    padding: 14px;
+    gap: 12px;
+  }
+
+  .role-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+  }
+
+  .role-info h3 {
+    font-size: 0.9rem;
+  }
+
+  /* Step actions */
+  .step-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .step-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Demo chips */
+  .demo-chips {
+    gap: 6px;
+  }
+
+  .demo-chip {
+    font-size: 0.75rem;
+    padding: 5px 10px;
+  }
+
+  /* Captcha */
+  .captcha-v2-body {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .captcha-canvas-wrapper {
+    align-self: center;
+  }
+
+  .captcha-v2-input {
+    font-size: 0.95rem;
+    padding: 10px 32px 10px 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  .auth-card {
+    padding: 22px 14px;
+  }
+
+  .otp-box {
+    width: 34px;
+    height: 42px;
+    font-size: 1rem;
+  }
+}
+
+/* ─────────────────────────────────────────
+   5. LANDING PAGE
+───────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .hero-section {
+    padding: 40px 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .landing-page {
+    padding: 20px 0;
+  }
+
+  .hero-section {
+    padding: 32px 16px 48px;
+    gap: 36px;
+  }
+
+  .hero-title {
+    font-size: 2.4rem !important;
+    letter-spacing: -0.8px;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem !important;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Floating cards — hide on small screens to prevent overlap */
+  .appointment-card,
+  .secure-card {
+    display: none;
+  }
+
+  .hero-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-top: 24px;
+  }
+
+  /* Care made simple section */
+  .care-simple-section {
+    padding: 48px 16px;
+  }
+
+  .process-timeline-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .process-step-item {
+    padding: 24px 14px;
+  }
+
+  .process-icon-box {
+    width: 56px;
+    height: 56px;
+    font-size: 1.3rem;
+    margin-bottom: 14px;
+  }
+
+  /* Portals */
+  .portal-section,
+  .features-section,
+  .cta-footer-section {
+    padding: 48px 16px;
+  }
+
+  .portal-grid {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+  }
+
+  .portal-card {
+    padding: 24px 20px;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  /* CTA Footer */
+  .cta-footer-card {
+    padding: 40px 20px;
+  }
+
+  .section-header {
+    margin-bottom: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.9rem !important;
+  }
+
+  .hero-stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 0;
+  }
+
+  .stat-number {
+    font-size: 1rem;
+  }
+
+  .stat-label {
+    font-size: 0.68rem;
+    white-space: normal;
+  }
+
+  .stat-icon-wrapper {
+    width: 34px;
+    height: 34px;
+    font-size: 0.9rem;
+  }
+
+  .process-timeline-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-main {
+    grid-template-columns: 1fr;
+    padding: 32px 16px 20px;
+    gap: 24px;
+  }
+
+  .footer-brand-col {
+    grid-column: unset;
+    flex-direction: column;
+  }
+
+  .footer-bottom-bar {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+    padding: 14px 16px;
+  }
+
+  .footer-bottom-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+}
+
+/* ─────────────────────────────────────────
+   6. CONTACT PAGE
+───────────────────────────────────────── */
+@media (max-width: 768px) {
+  .contact-page {
+    padding: 40px 0 60px;
+  }
+
+  .contact-container {
+    padding: 0 16px;
+    gap: 36px;
+  }
+
+  .contact-title {
+    font-size: 2.4rem !important;
+    letter-spacing: -0.8px;
+  }
+
+  .contact-subtitle {
+    font-size: 0.95rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-title {
+    font-size: 1.8rem !important;
+  }
+
+  .contact-page {
+    padding: 28px 0 48px;
+  }
+
+  .contact-container {
+    padding: 0 14px;
+    gap: 28px;
+  }
+}
+
+/* ─────────────────────────────────────────
+   7. ABOUT PAGE
+───────────────────────────────────────── */
+@media (max-width: 768px) {
+
+  .about-page,
+  .about-section {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+/* ─────────────────────────────────────────
+   8. FAQ PAGE
+───────────────────────────────────────── */
+@media (max-width: 640px) {
+
+  .faq-page,
+  .faq-container {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .faq-title {
+    font-size: 2rem !important;
+  }
+}
+
+/* ─────────────────────────────────────────
+   9. SUPPORT / HELP CENTER PAGES
+───────────────────────────────────────── */
+@media (max-width: 640px) {
+
+  .support-page,
+  .help-center-page {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+}
+
+/* ─────────────────────────────────────────
+   10. GLOBAL QUERY BOT
+───────────────────────────────────────── */
+@media (max-width: 640px) {
+
+  /* Bot window */
+  .global-chat-panel {
+    position: fixed !important;
+    right: 16px !important;
+    left: auto !important;
+    width: calc(100vw - 32px) !important;
+    max-width: 380px !important;
+    bottom: 80px !important;
+    height: 460px !important;
+    border-radius: 16px !important;
+  }
+
+  /* Bot trigger button */
+  .global-query-bot-container {
+    bottom: 16px !important;
+    right: 16px !important;
+    left: auto !important;
+  }
+}
+
+/* ─────────────────────────────────────────
+   11. SOS FAB & DASHBOARD
+───────────────────────────────────────── */
+@media (max-width: 480px) {
+  .sos-dashboard-fab {
+    bottom: 16px !important;
+    left: 12px !important;
+    min-width: 80px;
+    padding: 10px 14px;
+    font-size: 0.7rem;
+  }
+
+  .sos-fab-icon {
+    font-size: 1.4rem;
+  }
+}
+
+/* ─────────────────────────────────────────
+   12. TESTIMONIAL SECTION
+───────────────────────────────────────── */
+@media (max-width: 640px) {
+  .testimonial-container {
+    grid-template-columns: 1fr !important;
+    padding: 28px 16px !important;
+    gap: 28px !important;
+  }
+
+  .client-image-wrapper {
+    width: 140px;
+    height: 140px;
+  }
+
+  .testimonial-quote-text {
+    font-size: 1.1rem !important;
+    text-align: center !important;
+  }
+
+  .testimonial-right {
+    padding-left: 0 !important;
+    text-align: center !important;
+  }
+
+  .large-quote-icon {
+    font-size: 5rem !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    top: -24px !important;
+  }
+}
+
+/* ─────────────────────────────────────────
+   13. DASHBOARD PAGES (Patient / Doctor / Admin)
+───────────────────────────────────────── */
+@media (max-width: 768px) {
+
+  /* Sidebar collapse — make it drawer or hidden */
+  .sidebar,
+  .dashboard-sidebar {
+    position: fixed;
+    left: -260px;
+    top: 0;
+    bottom: 0;
+    width: 260px;
+    z-index: 200;
+    transition: left 0.3s ease;
+    overflow-y: auto;
+    background: var(--bg-primary);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.1);
+  }
+
+  .sidebar.open,
+  .dashboard-sidebar.open {
+    left: 0;
+  }
+
+  .dashboard-main,
+  .main-content {
+    margin-left: 0 !important;
+    width: 100% !important;
+    padding: 16px !important;
+  }
+
+  .dashboard-grid,
+  .stats-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 14px !important;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .dashboard-grid,
+  .stats-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .dashboard-main,
+  .main-content {
+    padding: 12px !important;
+  }
+}
+
+/* ─────────────────────────────────────────
+   14. BOOKING / CONSULTATION PAGES
+───────────────────────────────────────── */
+@media (max-width: 768px) {
+
+  .booking-container,
+  .consultation-container {
+    padding: 16px;
+    flex-direction: column !important;
+  }
+
+  .booking-sidebar {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* ─────────────────────────────────────────
+   15. COMMON CARD & GRID FIXES
+───────────────────────────────────────── */
+@media (max-width: 640px) {
+
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr !important;
+  }
+
+  .glass-card {
+    padding: 18px 16px;
+  }
+
+  .stat-card {
+    padding: 18px 14px;
+  }
+
+  .stat-card .stat-value {
+    font-size: 1.8rem;
+  }
+}
+
+/* ─────────────────────────────────────────
+   16. FORM & INPUT MOBILE IMPROVEMENTS
+───────────────────────────────────────── */
+@media (max-width: 480px) {
+  .form-input {
+    font-size: 16px;
+    /* Prevents auto-zoom on iOS */
+    padding: 12px 14px;
+  }
+
+  .form-group {
+    margin-bottom: 16px;
+  }
+
+  select.form-input {
+    font-size: 16px;
+  }
+
+  textarea.form-input {
+    font-size: 16px;
+    min-height: 90px;
+  }
+}
+
+/* ─────────────────────────────────────────
+   17. TABLE HORIZONTAL SCROLL ON MOBILE
+───────────────────────────────────────── */
+@media (max-width: 768px) {
+  .mediverse-table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .mediverse-table {
+    min-width: 560px;
+  }
+}
+
+/* ─────────────────────────────────────────
+   18. NOTIFICATION & SCHEDULE PANELS
+───────────────────────────────────────── */
+@media (max-width: 480px) {
+
+  .notification-panel,
+  .schedule-panel {
+    top: 64px;
+    right: 8px;
+    left: 8px;
+    width: auto;
+    border-radius: 16px;
+  }
+
+  .notification-list {
+    max-height: 260px;
+  }
+}
+
+/* ─────────────────────────────────────────
+   19. PROFILE DROPDOWN MOBILE FIX
+───────────────────────────────────────── */
+@media (max-width: 480px) {
+  .profile-dropdown-menu {
+    right: -8px;
+    width: min(240px, calc(100vw - 16px));
+  }
+
+  .profile-switcher-dropdown {
+    right: -8px;
+    width: min(220px, calc(100vw - 16px));
+  }
+}
+
+/* ─────────────────────────────────────────
+   20. SAFE TOUCH TARGETS (min 44×44px)
+───────────────────────────────────────── */
+@media (max-width: 768px) {
+
+  .btn,
+  .nav-link,
+  .mobile-nav-link,
+  .tab-item,
+  .footer-social-btn {
+    min-height: 44px;
+  }
+
+  .mobile-menu-toggle {
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* ─────────────────────────────────────────
+   21. LANDSCAPE PHONE FIXES
+───────────────────────────────────────── */
+@media (max-height: 500px) and (orientation: landscape) {
+  .auth-page {
+    align-items: flex-start;
+    padding-top: 16px;
+  }
+
+  .auth-card {
+    padding: 20px 24px;
+  }
+
+  .hero-section {
+    padding: 24px 16px 32px;
+  }
+
+  .landing-page {
+    padding: 12px 0;
+  }
+}
+
+/* ─────────────────────────────────────────
+   22. PREVENT TEXT OVERFLOW GLOBALLY
+───────────────────────────────────────── */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+a,
+li,
+td,
+th {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+/* ─────────────────────────────────────────
+   23. DASHBOARD QUICK ACTIONS GRID
+───────────────────────────────────────── */
+.dashboard-quick-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 1024px) {
+  .dashboard-quick-actions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .dashboard-quick-actions-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /* Clinical AI Bot FAB mobile styling */
+  .medgamma-fab {
+    width: 54px !important;
+    height: 54px !important;
+    padding: 0 !important;
+    border-radius: 50% !important;
+    bottom: 16px !important;
+    right: 16px !important;
+    z-index: 1000 !important;
+  }
+
+  .medgamma-fab span {
+    display: none !important;
+  }
+
+  /* Stack Global Query Bot vertically above Clinical Bot on Patient Dashboard */
+  .global-query-bot-container.dashboard-shifted {
+    bottom: 90px !important;
+    right: 16px !important;
+    left: auto !important;
+  }
+}
+
+/* ─────────────────────────────────────────
+   24. MOBILE RESPONSIVENESS REFACTOR (<768px)
+───────────────────────────────────────── */
+@media (max-width: 768px) {
+
+  /* Force Grids & Containers Layouts to Vertical Column Orientation */
+  .grid-2,
+  .grid-3,
+  .grid-4,
+  .pharmacy-main-grid,
+  .pharmacy-analytics-grid,
+  .pharmacy-order-grid,
+  .diagnostic-order-grid,
+  .consultation-room-grid,
+  .consultation-scribe-grid,
+  .hospital-dashboard-grid,
+  .doctor-prescribe-grid,
+  .admin-stats-grid {
+    grid-template-columns: 1fr !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+
+  /* Table-to-Card Dismantling */
+  table,
+  tbody,
+  tr,
+  td {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  thead {
+    display: none !important;
+  }
+
+  tr {
+    background: var(--bg-card) !important;
+    padding: 16px !important;
+    border: 1px solid var(--bg-glass-border) !important;
+    border-radius: 12px !important;
+    margin-bottom: 16px !important;
+    box-shadow: var(--shadow-sm) !important;
+    transition: transform 0.2s, box-shadow 0.2s !important;
+  }
+
+  tr:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: var(--shadow-md) !important;
+  }
+
+  td {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 10px 0 !important;
+    border: none !important;
+    border-bottom: 1px solid var(--bg-glass-border) !important;
+    text-align: right !important;
+  }
+
+  td:last-child {
+    border-bottom: none !important;
+  }
+
+  td::before {
+    content: attr(data-label) !important;
+    font-weight: 600 !important;
+    color: var(--text-muted) !important;
+    float: left !important;
+    text-align: left !important;
+    padding-right: 12px !important;
+  }
+
+  /* td-value helper styling for table cell contents alignment */
+  .td-value {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-end !important;
+    text-align: right !important;
+  }
+
+  /* Prevent layout overflows on all standard table tags */
+  table,
+  tbody,
+  tr,
+  td,
+  th {
+    word-break: break-word !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  /* Reset min-width constraints on tables */
+  .mediverse-table,
+  table {
+    min-width: auto !important;
+  }
+
+  /* Responsive Horizontal Scrollable Tabs & Buttons */
+  .dashboard-tabs,
+  .doctor-tabs,
+  .tab-group,
+  .bookings-filter-tabs {
+    display: flex !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 12px !important;
+    flex-wrap: nowrap !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+    padding-bottom: 4px !important;
+  }
+
+  .dashboard-tabs::-webkit-scrollbar,
+  .doctor-tabs::-webkit-scrollbar,
+  .tab-group::-webkit-scrollbar,
+  .bookings-filter-tabs::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .dashboard-tabs button,
+  .dashboard-tabs a,
+  .doctor-tabs button,
+  .doctor-tabs a,
+  .tab-group button,
+  .tab-group a,
+  .bookings-filter-tabs button,
+  .bookings-filter-tabs a {
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+  }
+
+  /* Doctor Hospital Cards Stacking */
+  .doctor-hospital-card {
+    flex-direction: column !important;
+    gap: 16px !important;
+    align-items: stretch !important;
+  }
+
+  .doctor-hospital-card > div:first-child {
+    width: 100% !important;
+    height: 180px !important;
+  }
+
+  /* Doctor Pending/Confirmed Appointment Card Stacking */
+  .appt-card {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 16px !important;
+  }
+
+  .appt-card .badge {
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+  }
+
+  .appt-card > div > div:first-child {
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
+
+  .appt-card > div {
+    padding-right: 0 !important;
+    min-width: auto !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+  }
+
+  .appt-card input {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Patient Visited Doctor Card Stacking */
+  .visited-doctors-table-header {
+    display: none !important;
+  }
+
+  .visited-doctor-card {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    padding: 16px !important;
+    align-items: stretch !important;
+  }
+
+  .visited-doctor-card > div {
+    width: 100% !important;
+    text-align: left !important;
+    justify-content: flex-start !important;
+    word-break: break-word !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  .visited-doctor-card > div:last-child {
+    justify-content: flex-start !important;
+    margin-top: 4px !important;
+  }
+}
+
+/* ─────────────────────────────────────────
+   25. COMPREHENSIVE DASHBOARD MOBILE OVERRIDES (<768px)
+───────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Prevent horizontal page stretch and force wrapping */
+  html, body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    min-width: 0 !important;
+  }
+
+  .page-container,
+  .patient-dashboard-grid,
+  .left-side-content,
+  .right-side-rewards,
+  .dashboard-quick-actions-grid,
+  .dashboard-tabs,
+  .tab-group,
+  .filters-row,
+  .glass-card,
+  .rewards-card,
+  .hospital-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .page-container {
+    padding: 0 12px 60px !important;
+  }
+
+  .form-input-icon {
+    min-width: 0 !important;
+  }
+
+  /* General Grid collapser helper */
+  .grid, .grid-2, .grid-3, .grid-4, .grid-6 {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* Tab switcher horizontal scrolling robustness */
+  .tab-group, .dashboard-tabs, .doctor-tabs, .bookings-filter-tabs {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding-bottom: 10px !important;
+    scrollbar-width: thin !important;
+    scrollbar-color: var(--primary) transparent !important;
+  }
+  
+  .tab-group button, .tab-group a, 
+  .dashboard-tabs button, .dashboard-tabs a,
+  .doctor-tabs button, .doctor-tabs a,
+  .bookings-filter-tabs button, .bookings-filter-tabs a,
+  .tab-item {
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+  }
+
+  /* Custom Webkit scrollbar for tabs */
+  .tab-group::-webkit-scrollbar, 
+  .dashboard-tabs::-webkit-scrollbar, 
+  .doctor-tabs::-webkit-scrollbar, 
+  .bookings-filter-tabs::-webkit-scrollbar {
+    height: 5px !important;
+    display: block !important;
+  }
+
+  .tab-group::-webkit-scrollbar-thumb, 
+  .dashboard-tabs::-webkit-scrollbar-thumb, 
+  .doctor-tabs::-webkit-scrollbar-thumb, 
+  .bookings-filter-tabs::-webkit-scrollbar-thumb {
+    background: var(--primary) !important;
+    border-radius: 4px !important;
+  }
+
+  .tab-group::-webkit-scrollbar-track, 
+  .dashboard-tabs::-webkit-scrollbar-track, 
+  .doctor-tabs::-webkit-scrollbar-track, 
+  .bookings-filter-tabs::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-radius: 4px !important;
+  }
+
+  /* Global chatbot overlay styling corrections */
+  .global-chat-panel {
+    position: fixed !important;
+    right: 16px !important;
+    left: auto !important;
+    width: calc(100vw - 32px) !important;
+    max-width: 380px !important;
+    bottom: 80px !important;
+    height: 460px !important;
+    border-radius: 16px !important;
+  }
+  
+  .global-query-bot-container {
+    bottom: 16px !important;
+    right: 16px !important;
+    left: auto !important;
+  }
+  
+  /* Stack Global Query Bot vertically above MedGamma on Patient Dashboard */
+  .global-query-bot-container.dashboard-shifted {
+    bottom: 140px !important;
+    right: 16px !important;
+    left: auto !important;
+  }
+  
+  .medgamma-fab {
+    bottom: 16px !important;
+    right: 16px !important;
+    padding: 0 !important;
+    border-radius: 50% !important;
+    width: 54px !important;
+    height: 54px !important;
+  }
+
+  /* Patient Dashboard search/filter row overrides */
+  .search-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+  }
+  
+  .filters-row > div:first-child {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    flex-shrink: 1 !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding-bottom: 8px !important;
+    scrollbar-width: thin !important;
+    scrollbar-color: var(--primary) transparent !important;
+    display: flex !important;
+    gap: 8px !important;
+  }
+
+  .filters-row > div:first-child::-webkit-scrollbar {
+    height: 4px !important;
+    display: block !important;
+  }
+
+  .filters-row > div:first-child::-webkit-scrollbar-thumb {
+    background: var(--primary) !important;
+    border-radius: 2px !important;
+  }
+
+  .filters-row > div:first-child::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-radius: 2px !important;
+  }
+
+  /* Body Map interactive panels mobile stacking */
+  .body-map-panel {
+    flex: 1 1 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Reduce card body padding on mobile for hospital items */
+  .hospital-card div[style*="padding: 24px"],
+  .hospital-card div[style*="padding:24px"],
+  .hospital-card div[style*="padding: '24px'"] {
+    padding: 16px !important;
+  }
+
+  /* Patient Dashboard overrides */
+  .patient-dashboard-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  
+  .left-side-content, .right-side-rewards {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  /* Rewards card checklist */
+  .checklist-item {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+  }
+  
+  /* Modal responsive wrapper */
+  .modal-content {
+    width: calc(100vw - 24px) !important;
+    padding: 16px !important;
+    margin: 12px !important;
+  }
+  
+  iframe, .map-iframe {
+    width: 100% !important;
+    height: 250px !important;
+  }
+
+  /* Doctor Dashboard overrides */
+  .doctor-profile-header, 
+  .doctor-header-card,
+  .pharmacy-header-card {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 16px !important;
+  }
+  
+  .doctor-header-card > div,
+  .doctor-profile-header > div,
+  .pharmacy-header-card > div {
+    text-align: center !important;
+    align-items: center !important;
+  }
+
+  .doctor-header-card label,
+  .doctor-profile-header label {
+    align-self: center !important;
+  }
+  
+  /* Doctor prescription list and editor */
+  .prescription-form-container,
+  .doctor-prescribe-grid {
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+  }
+  
+  /* Booking details slots */
+  .booking-slots-grid, .slots-grid {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)) !important;
+    gap: 10px !important;
+  }
+
+  /* Pharmacy Dashboard overrides */
+  .pharmacy-main-grid,
+  .pharmacy-analytics-grid,
+  .pharmacy-order-grid {
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+  }
+  
+  .chart-container, canvas {
+    max-width: 100% !important;
+  }
+
+  /* Hospital Dashboard overrides */
+  .hospital-dashboard-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .hospital-info-wrapper {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  /* Admin Dashboard overrides */
+  .admin-stats-grid {
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+  }
+  
+  .admin-console-card {
+    padding: 16px !important;
+  }
+  
+  /* Ticket logs and lists */
+  .ticket-list-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Extra small screens overrides */
+@media (max-width: 640px) {
+  /* Scale down care plan and summary card elements */
+  .rewards-card p,
+  .rewards-card div,
+  .rewards-card span,
+  .rewards-card strong,
+  .care-plan-markdown,
+  .care-plan-markdown * {
+    font-size: 0.8rem !important;
+    line-height: 1.4 !important;
+  }
+
+  .care-plan-markdown h3 {
+    font-size: 0.95rem !important;
+    margin-top: 10px !important;
+    margin-bottom: 4px !important;
+  }
+
+  .care-plan-markdown h4 {
+    font-size: 0.88rem !important;
+    margin-top: 8px !important;
+    margin-bottom: 4px !important;
+  }
+
+  /* Reduce rewards card padding to maximize content area */
+  .rewards-card, .glass-card {
+    padding: 16px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Title headings sizing to prevent wrapping ugliness */
+  .heading-xl {
+    font-size: 1.8rem !important;
+  }
+  
+  .heading-lg {
+    font-size: 1.5rem !important;
+  }
+  
+  .heading-md {
+    font-size: 1.2rem !important;
+  }
+
+  .tab-group, .dashboard-tabs, .doctor-tabs, .bookings-filter-tabs {
+    padding-bottom: 8px !important;
+  }
+  
+  /* Form input text zoom prevention on iOS */
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+}
